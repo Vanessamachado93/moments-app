@@ -8,6 +8,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./moment-form.component.css']
 })
 export class MomentFormComponent implements OnInit {
+  onFileSelectd(event: any) {
+    const file:File = event.target.files[0];
+
+    this.momentForm.patchValue({image: file})
+
+  }
   @Input() btnText!: string;
 
   momentForm!: FormGroup;
@@ -31,7 +37,10 @@ export class MomentFormComponent implements OnInit {
     return this.momentForm.get('description')!;
   }
   submit() {
-    console.log("Enviou o formulário!")
-  }
+    if (this.momentForm.invalid) {
+      return;
+    }
 
+    console.log(this.momentForm.value);
+  }
 }
