@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+
+import { FormGroup , FormControl, Validators } from '@angular/forms';
+
+import { Moment } from 'src/app/Moment';
 
 @Component({
   selector: 'app-new-moments',
@@ -6,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-moments.component.css']
 })
 export class NewMomentsComponent implements OnInit {
-  btnText = "Compartilhar!"
+
+  @Input() btnText = "Compartilhar!"
   constructor() { }
 
+  momentForm!: FormGroup;
+
   ngOnInit(): void {
+  }
+
+  async createHandler(moment: Moment){
+    console.log("deu bom?");
   }
 
 }
